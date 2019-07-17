@@ -5,10 +5,13 @@ import algorithms.Sorting;
 public class SortingDemo {
 
   public static void startBubbleAndInsertDemo() {
-    Integer[] testArray = ArraysDemo.createRandomArray();
+    Integer[] testArray = ArraysDemo.createRandomArray(100000);
     ArraysDemo.displayArray(testArray);
+    long startTime = System.currentTimeMillis();
     Sorting.bubbleSort(testArray);
-    System.out.println("========After sorting");
+    long finishTime = System.currentTimeMillis();
     ArraysDemo.displayArray(testArray);
+    System.out.println("========Bubble sorting time: " + (finishTime - startTime) + " mls");
+
   }
 }

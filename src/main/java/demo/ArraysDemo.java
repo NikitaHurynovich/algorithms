@@ -54,9 +54,9 @@ public class ArraysDemo {
     orderedArray.display();
   }
 
-  public static Integer[] createRandomArray() {
-    Integer[] array = new Integer[SIZE];
-    for (int i = 0; i < SIZE; i++) {
+  public static Integer[] createRandomArray(int size) {
+    Integer[] array = new Integer[size];
+    for (int i = 0; i < size; i++) {
       int value = (int) (Math.random() * 100);
       array[i] = value;
     }
