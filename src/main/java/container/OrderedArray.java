@@ -17,17 +17,25 @@ public class OrderedArray {
     int leftBound = 0;
     int rightBound = nElems - 1;
 
-    while (leftBound >= rightBound) {
+    if (array.length ==0) {
+      return -1;
+    }
+
+    for (int i = 0; leftBound <= rightBound; i ++) {
       int middle = (rightBound + leftBound) / 2;
       if (searchKey == array[middle]) {
+        System.out.println("Iteration count = " + i);
         return middle;
       }
 
       if (searchKey == array[leftBound]) {
+        System.out.println("Iteration count = " + i);
+
         return leftBound;
       }
 
       if (searchKey == array[rightBound]) {
+        System.out.println("Iteration count = " + i);
         return rightBound;
       }
 
@@ -45,12 +53,18 @@ public class OrderedArray {
     if (nElems + 1 > array.length) {
       this.increaseSize();
     }
-    for (int i = 0; i < nElems; i++) {
+
+    int i = 0;
+    for (i = 0; i < nElems; i++) {
       if (array[i] >= value) {
-        nElems++;
-        return;
+        break;
       }
     }
+    for (int j = nElems; j > i; j--) {
+      array[j] = array[j-1];
+    }
+    array[i] = value;
+    nElems++;
   }
 
   public boolean delete(int value) {
@@ -78,11 +92,11 @@ public class OrderedArray {
     if (secondArray == null || secondArray.length == 0) {
       return null;
     }
-    int[] mergedArray = new int[array.length + secondArray.length];
+    int[] mergedArray = new int[nElems + secondArray.length];
     int firstPointer = 0;
     int secondPointer = 0;
     for (int i = 0; i < mergedArray.length; i++) {
-      if (firstPointer < array.length && secondPointer < secondArray.length) {
+      if (firstPointer < nElems && secondPointer < secondArray.length) {
         if (array[firstPointer] < secondArray[secondPointer]) {
           mergedArray[i] = array[firstPointer];
           firstPointer++;
@@ -93,7 +107,7 @@ public class OrderedArray {
       } else if (secondPointer < secondArray.length) {
         mergedArray[i] = secondArray[secondPointer];
         secondPointer++;
-      } else if (firstPointer < array.length) {
+      } else if (firstPointer < nElems) {
         mergedArray[i] = array[firstPointer];
         firstPointer++;
       }
@@ -110,7 +124,6 @@ public class OrderedArray {
       if (valueToCompare != null) {
         for (int j = i + 1; j < nElems; j++) {
           if (array[j] == valueToCompare) {
-            array[i] = null;
             array[j] = null;
           }
         }
@@ -137,7 +150,7 @@ public class OrderedArray {
     }
     System.out.println("===========Ordered array===========");
     for (int i = 0; i < nElems; i ++) {
-      System.out.println(array[i]);
+      System.out.println("[" + i +"] = "  + array[i]);
     }
   }
 }
