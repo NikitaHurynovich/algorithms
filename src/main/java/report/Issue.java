@@ -4,6 +4,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 @XmlRootElement(name = "issue")
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -11,13 +12,20 @@ public class Issue {
 
   private String name;
   private String host;
+  @XmlJavaTypeAdapter(AdapterCDATA.class)
   private String path;
+  @XmlJavaTypeAdapter(AdapterCDATA.class)
   private String location;
+  @XmlJavaTypeAdapter(AdapterCDATA.class)
   private String severity;
   private String confidence;
+  @XmlJavaTypeAdapter(AdapterCDATA.class)
   private String issueBackground;
+  @XmlJavaTypeAdapter(AdapterCDATA.class)
   private String remediationBackground;
+  @XmlJavaTypeAdapter(AdapterCDATA.class)
   private String issueDetail;
+  @XmlJavaTypeAdapter(AdapterCDATA.class)
   private String remediationDetail;
   @XmlElement(name = "requestresponse")
   private RequestResponse requestResponse;
