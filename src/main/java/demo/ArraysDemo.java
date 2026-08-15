@@ -1,7 +1,7 @@
 package demo;
 
-import container.HighArray;
-import container.OrderedArray;
+import container.array.HighArray;
+import container.array.OrderedArray;
 
 public class ArraysDemo {
 

@@ -1,4 +1,4 @@
-package container;
+package container.array;
 
 public class HighArray {
   private int nElems;
